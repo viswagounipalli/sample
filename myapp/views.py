@@ -6,13 +6,11 @@ import random
 def Home(request):
 	return render(request,"home.html")
 
-
 def Register_fun(request):
 	if request.method=="POST":
 		register_f=register_form(request.POST)
 		if register_f.is_valid():
-			register_f.save()
-			
+			register_f.save()			
 			request.session["uname"]=register_f.cleaned_data["firstname"]
 			f_data=register.objects.filter(firstname=register_f.cleaned_data["firstname"],email=register_f.cleaned_data["email"])
 			return render(request,"user_inforamation_page.html",{"data":f_data})
@@ -46,16 +44,9 @@ def update_fun(request,id):
 	else:
 		return render(request,"update_page.html",{"data":form})
 	
-	#data=register.objects.get(id=request.GET["a"])
-	
-	#form = register_form(request.POST or None,instance=data)
-
-
 def user_dashboard(request):
 	if request.session.has_key("uname"):
 		data_list=register.objects.filter(firstname=request.session["uname"])
-		#data={}
-		#[data.setdefault(k,v) for k,v in data_list.values()[0].items() if k not in("password","id")]
 		return render(request,"user_inforamation_page.html",{"data":data_list})
 	else:
 		return redirect("home")
