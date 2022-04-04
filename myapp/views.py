@@ -6,6 +6,8 @@ import random
 def Home(request):
 	return render(request,"home.html")
 def Register_fun(request):
+
+		"""***************************************************newly added code***********************************************************"""
 		register_f=register_form()
 		return render(request,"register_page.html",{"data":register_f})
 
