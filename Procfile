@@ -1,0 +1,1 @@
+web: gunicorn viswaproject.wsgi --log-file -

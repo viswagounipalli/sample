@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>user_information</title>
+{% extends 'base.html' %}
+{% block content %}
+</head>
+<style type="text/css">
+	table, th, td {
+	  border: 1px solid black;
+}
+
+</style>
+<body>
+	
+	<table>
+		<tr>
+			<th>Firstname</th>
+			<th>Lastname</th>
+			<th>Email</th>
+			<th>Address</th>
+			<th>Operation1</th>
+			<th>Operation2</th>
+		</tr>
+	{% for each in data %}
+		<tr>
+		<td>{{each.firstname }}</td>
+		<td>{{each.lastname}}</td>
+		<td>{{each.email}}</td>
+		<td>{{each.address}}</td>
+		<td><a href="update/{{ each.id}}">Update</a></td>
+		<td><a href="delete/{{ each.id}}">Delete</a></td>
+		</tr>
+	{% endfor %}
+	</table>
+
+<a href="logout">logout</a>
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+</script>
+<script type="text/javascript">
+
+function my_function() {
+  if (confirm("Check the details before submit...")) {
+  	form_dom=document.getElementById('submit_form')	
+  	
+  	form_dom.method="POST"
+    //form_dom.action="./register"
+  }
+  else{
+  	console.log("data not submited")
+  }
+}
+
+</script>	
+</head>
+
+{% extends 'base.html' %}
+{% block content %}
+<body>
+<h1> Welcome Register Page</h1>
+<form action="" id="submit_form" onsubmit="my_function()">
+	{% csrf_token %}
+{{ data.as_p }}
+<input id="submit_btn" type="submit" name="submit">
+</body>
+</html>
+{% endblock %}
